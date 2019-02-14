@@ -68,7 +68,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         // barely visible tiny view for fooling Quicktime player. completely black images are ignored by QT
         self.view.addSubview(self.qtFoolingBgView)
         
-        self.view.addSubview(self.sceneView)
+//        self.view.addSubview(self.sceneView)
 
         self.view.addSubview(self.startButton)
     }
@@ -110,14 +110,6 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         super.viewDidDisappear(animated)
         
         self.audioPlayer.stop()
-    }
-    
-    // MARK: - SCNSceneRendererDelegate
-
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        // this function is run in a background thread.
-//        DispatchQueue.main.async {
-//        }
     }
     
     // MARK: - Private
