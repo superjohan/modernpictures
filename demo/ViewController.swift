@@ -114,15 +114,26 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isHidden = true
 
         self.contentView1.frame = self.view.bounds
-        self.contentView1.backgroundColor = .green
-        let mask1 = MaskView(frame: self.view.bounds, offset: 1)
+        let mask1 = MaskView(frame: self.view.bounds, offset: 2)
         self.contentView1.mask = mask1
         
         self.contentView2.frame = self.view.bounds
-        self.contentView2.backgroundColor = .red
-        let mask2 = MaskView(frame: self.view.bounds, offset: 3)
+        let mask2 = MaskView(frame: self.view.bounds, offset: 6)
         self.contentView2.mask = mask2
-        
+
+        let label1 = UILabel(frame: self.contentView1.frame)
+        label1.font = UIFont.boldSystemFont(ofSize: 200)
+        label1.text = " hello"
+        label1.textColor = .red
+        self.contentView1.addSubview(label1)
+
+        let label2 = UILabel(frame: self.contentView1.frame)
+        label2.frame.size.height -= 100
+        label2.font = UIFont.boldSystemFont(ofSize: 200)
+        label2.text = "     there"
+        label2.textColor = .green
+        self.contentView2.addSubview(label2)
+
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
