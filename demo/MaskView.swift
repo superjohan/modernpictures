@@ -30,11 +30,11 @@ class MaskView: UIView {
 
         while position < rect.width {
             context.setStrokeColor(UIColor.white.cgColor)
-            context.setLineWidth(1.0 / self.contentScaleFactor)
-            context.move(to: CGPoint(x: position, y: 0))
-            context.addLine(to: CGPoint(x: position, y: rect.height))
+            context.setLineWidth(6.0 / self.contentScaleFactor)
+            context.move(to: CGPoint(x: position - 2, y: 0))
+            context.addLine(to: CGPoint(x: position - 2, y: rect.height))
             context.strokePath()
-            position += 4
+            position += 8
         }
     }
 }
