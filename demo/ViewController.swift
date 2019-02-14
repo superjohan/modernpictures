@@ -18,6 +18,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     let startButton: UIButton
     let qtFoolingBgView: UIView = UIView.init(frame: CGRect.zero)
 
+    let contentView1 = UIView()
+    let contentView2 = UIView()
+    
     // MARK: - UIViewController
     
     init() {
@@ -59,17 +62,24 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.startButton.addTarget(self, action: #selector(startButtonTouched), for: UIControl.Event.touchUpInside)
         
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = UIColor(white: 0.2, alpha: 1)
+        
         self.sceneView.backgroundColor = .black
         self.sceneView.delegate = self
-        
+
+        self.contentView1.backgroundColor = .clear
+        self.contentView2.backgroundColor = .clear
+
         self.qtFoolingBgView.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         
         // barely visible tiny view for fooling Quicktime player. completely black images are ignored by QT
         self.view.addSubview(self.qtFoolingBgView)
         
 //        self.view.addSubview(self.sceneView)
-
+        
+        self.view.addSubview(self.contentView1)
+        self.view.addSubview(self.contentView2)
+        
         self.view.addSubview(self.startButton)
     }
     
@@ -103,6 +113,16 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isPlaying = true
         self.sceneView.isHidden = true
 
+        self.contentView1.frame = self.view.bounds
+        self.contentView1.backgroundColor = .green
+        let mask1 = MaskView(frame: self.view.bounds, offset: 1)
+        self.contentView1.mask = mask1
+        
+        self.contentView2.frame = self.view.bounds
+        self.contentView2.backgroundColor = .red
+        let mask2 = MaskView(frame: self.view.bounds, offset: 3)
+        self.contentView2.mask = mask2
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
