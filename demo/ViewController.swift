@@ -140,6 +140,40 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     
     // MARK: - Private
     
+    private func scheduleEvents() {
+        let tick = ((120.0 / 130.0) / 8.0)
+        let length = tick * 36.0
+        let loops = 3 * 8
+        
+        for position in 0..<loops {
+            let startTime = length * Double(position)
+            
+            let hit1 = startTime + (tick * 15.0)
+            perform(#selector(event1), with: nil, afterDelay: hit1)
+            
+            let hit2 = startTime + (tick * 32.0)
+            perform(#selector(event2), with: nil, afterDelay: hit2)
+
+            let hit3 = startTime + (tick * 33.0)
+            perform(#selector(event3), with: nil, afterDelay: hit3)
+        }
+    }
+    
+    @objc
+    private func event1() {
+        showContentView(identifier: 1)
+    }
+    
+    @objc
+    private func event2() {
+        showContentView(identifier: 2)
+    }
+
+    @objc
+    private func event3() {
+        showContentView(identifier: 0)
+    }
+
     private func showContentView(identifier: Int) {
         for (index, view) in self.contentView.subviews.enumerated() {
             view.isHidden = identifier != index
@@ -163,6 +197,14 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.contentView.isHidden = false
         
         self.audioPlayer.play()
+
+        self.textMaskView1?.setText(text1: "Modern pictures", text2: "Modern pictures")
+        showContentView(identifier: 0)
+        
+        self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
+        self.textMaskView3?.setText(text1: "text1", text2: "text2", text3: "text3", text4: "text4")
+
+        scheduleEvents()
     }
     
     fileprivate func createScene() -> SCNScene {
