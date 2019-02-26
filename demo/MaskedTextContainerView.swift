@@ -67,7 +67,7 @@ class MaskedTextContainerView: UIView {
     
     private func addLabel(toView parent: UIView) -> UILabel {
         let label = UILabel(frame: parent.bounds)
-        label.font = UIFont.boldSystemFont(ofSize: 400)
+        label.font = UIFont.boldSystemFont(ofSize: self.bounds.size.height)
         label.lineBreakMode = .byClipping
         label.textColor = UIColor(white: 0.7, alpha: 1.0)
         parent.addSubview(label)
