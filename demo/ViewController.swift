@@ -140,6 +140,21 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     
     // MARK: - Private
     
+    fileprivate func start() {
+        self.sceneView.isHidden = false
+        self.contentView.isHidden = false
+        
+        self.audioPlayer.play()
+        
+        self.textMaskView1?.setText(text1: "Modern pictures", text2: "Modern pictures")
+        showContentView(identifier: 0)
+        
+        self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
+        self.textMaskView3?.setText(text1: "text1", text2: "text2", text3: "text3", text4: "text4")
+        
+        scheduleEvents()
+    }
+    
     private func scheduleEvents() {
         let tick = ((120.0 / 130.0) / 8.0)
         let length = tick * 36.0
@@ -190,21 +205,6 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         }, completion: { _ in
             self.start()
         })
-    }
-    
-    fileprivate func start() {
-        self.sceneView.isHidden = false
-        self.contentView.isHidden = false
-        
-        self.audioPlayer.play()
-
-        self.textMaskView1?.setText(text1: "Modern pictures", text2: "Modern pictures")
-        showContentView(identifier: 0)
-        
-        self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
-        self.textMaskView3?.setText(text1: "text1", text2: "text2", text3: "text3", text4: "text4")
-
-        scheduleEvents()
     }
     
     fileprivate func createScene() -> SCNScene {
