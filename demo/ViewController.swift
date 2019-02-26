@@ -176,22 +176,53 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     
     @objc
     private func event1() {
-        self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
+        if Bool.random() {
+            let word = randomWord()
+            self.textMaskView2?.setText(text1: word, text2: word, text3: word)
+        } else {
+            self.textMaskView2?.setText(text1: randomWord(), text2: randomWord(), text3: randomWord())
+        }
+        
         showContentView(identifier: 1)
     }
     
     @objc
     private func event2() {
-        self.textMaskView3?.setText(text1: "text1", text2: "text2", text3: "text3", text4: "text4")
+        if Bool.random() {
+            let word = randomWord()
+            self.textMaskView3?.setText(text1: word, text2: word, text3: word, text4: word)
+        } else {
+            self.textMaskView3?.setText(text1: randomWord(), text2: randomWord(), text3: randomWord(), text4: randomWord())
+        }
+        
         showContentView(identifier: 2)
     }
 
     @objc
     private func event3() {
-        self.textMaskView1?.setText(text1: "Modern", text2: "Modern")
+        if Bool.random() {
+            let word = randomWord()
+            self.textMaskView1?.setText(text1: word, text2: word)
+        } else {
+            self.textMaskView1?.setText(text1: randomWord(), text2: randomWord())
+        }
+
         showContentView(identifier: 0)
     }
 
+    private func randomWord() -> String {
+        let word = Constants.vocabulary[Int.random(in: 0..<Constants.vocabulary.count)]
+        
+        switch arc4random_uniform(3) {
+        case 0:
+            return word.capitalized
+        case 1:
+            return word.uppercased()
+        default:
+            return word
+        }
+    }
+    
     private func showContentView(identifier: Int) {
         for (index, view) in self.contentView.subviews.enumerated() {
             view.isHidden = identifier != index
@@ -230,5 +261,11 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         omniLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 0, 60)
         scene.rootNode.addChildNode(omniLightNode)
+    }
+}
+
+extension Bool {
+    static func random() -> Bool {
+        return arc4random_uniform(2) == 0
     }
 }
