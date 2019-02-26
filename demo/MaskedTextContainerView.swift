@@ -78,25 +78,32 @@ class MaskedTextContainerView: UIView {
     func setText(text1: String, text2: String) {
         assert(self.labelCount == 2)
         
-        setTextAndCenter(label: self.label1, text: text1)
-        setTextAndCenter(label: self.label2, text: text2)
+        updateLabels(text1: text1, text2: text2)
     }
     
     func setText(text1: String, text2: String, text3: String) {
         assert(self.labelCount == 3)
 
-        setTextAndCenter(label: self.label1, text: text1)
-        setTextAndCenter(label: self.label2, text: text2)
-        setTextAndCenter(label: self.label3, text: text3)
+        updateLabels(text1: text1, text2: text2, text3: text3)
     }
     
     func setText(text1: String, text2: String, text3: String, text4: String) {
         assert(self.labelCount == 4)
 
+        updateLabels(text1: text1, text2: text2, text3: text3, text4: text4)
+    }
+    
+    private func updateLabels(text1: String, text2: String, text3: String? = nil, text4: String? = nil) {
         setTextAndCenter(label: self.label1, text: text1)
         setTextAndCenter(label: self.label2, text: text2)
-        setTextAndCenter(label: self.label3, text: text3)
-        setTextAndCenter(label: self.label4, text: text4)
+        
+        if let text3 = text3 {
+            setTextAndCenter(label: self.label3, text: text3)
+        }
+
+        if let text4 = text4 {
+            setTextAndCenter(label: self.label4, text: text4)
+        }
     }
     
     private func setTextAndCenter(label: UILabel?, text: String) {
