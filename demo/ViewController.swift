@@ -62,7 +62,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.startButton.addTarget(self, action: #selector(startButtonTouched), for: UIControl.Event.touchUpInside)
         
-        self.view.backgroundColor = UIColor(white: 0.1, alpha: 1)
+        self.view.backgroundColor = .black
         
         self.sceneView.backgroundColor = .black
         self.sceneView.delegate = self
@@ -74,6 +74,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
 //        self.view.addSubview(self.sceneView)
 
+        self.contentView.isHidden = true
+        self.contentView.backgroundColor = UIColor(white: 0.1, alpha: 1)
         self.view.addSubview(self.contentView)
         
         self.view.addSubview(self.startButton)
@@ -142,6 +144,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     
     fileprivate func start() {
         self.sceneView.isHidden = false
+        self.contentView.isHidden = false
         
         self.audioPlayer.play()
     }
