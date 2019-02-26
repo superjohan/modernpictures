@@ -176,16 +176,19 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     
     @objc
     private func event1() {
+        self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
         showContentView(identifier: 1)
     }
     
     @objc
     private func event2() {
+        self.textMaskView3?.setText(text1: "text1", text2: "text2", text3: "text3", text4: "text4")
         showContentView(identifier: 2)
     }
 
     @objc
     private func event3() {
+        self.textMaskView1?.setText(text1: "Modern", text2: "Modern")
         showContentView(identifier: 0)
     }
 
