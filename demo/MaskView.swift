@@ -10,9 +10,11 @@ import UIKit
 
 class MaskView: UIView {
     private let startOffset: CGFloat
+    private let count: Int
     
-    init(frame: CGRect, offset: CGFloat) {
+    init(frame: CGRect, offset: CGFloat, count: Int) {
         self.startOffset = offset
+        self.count = count
         
         super.init(frame: frame)
         
@@ -34,7 +36,7 @@ class MaskView: UIView {
             context.move(to: CGPoint(x: position - 2, y: 0))
             context.addLine(to: CGPoint(x: position - 2, y: rect.height))
             context.strokePath()
-            position += 8
+            position += 4.0 * CGFloat(self.count)
         }
     }
 }
