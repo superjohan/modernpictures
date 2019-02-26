@@ -94,30 +94,70 @@ class MaskedTextContainerView: UIView {
     }
     
     private func updateLabels(text1: String, text2: String, text3: String? = nil, text4: String? = nil) {
-        setTextAndCenter(label: self.label1, text: text1)
-        setTextAndCenter(label: self.label2, text: text2)
+        let angle1: CGFloat
+        let angle2: CGFloat
+        let angle3: CGFloat
+        let angle4: CGFloat
+
+        switch RotationOption.random() {
+        case .none:
+            angle1 = CGFloat.random(in: -0.2...0.2)
+            angle2 = angle1
+            angle3 = angle1
+            angle4 = angle1
+        case .some:
+            angle1 = CGFloat.random(in: -0.2...0.2)
+            angle2 = angle1 + CGFloat.random(in: -0.2...0.2)
+            angle3 = angle1 + CGFloat.random(in: -0.2...0.2)
+            angle4 = angle1 + CGFloat.random(in: -0.2...0.2)
+        default:
+            angle1 = CGFloat.random(in: -1...1)
+            angle2 = CGFloat.random(in: -1...1)
+            angle3 = CGFloat.random(in: -1...1)
+            angle4 = CGFloat.random(in: -1...1)
+        }
+
+        setTextAndCenter(label: self.label1, text: text1, rotationAngle: angle1)
+        setTextAndCenter(label: self.label2, text: text2, rotationAngle: angle2)
         
         if let text3 = text3 {
-            setTextAndCenter(label: self.label3, text: text3)
+            setTextAndCenter(label: self.label3, text: text3, rotationAngle: angle3)
         }
 
         if let text4 = text4 {
-            setTextAndCenter(label: self.label4, text: text4)
+            setTextAndCenter(label: self.label4, text: text4, rotationAngle: angle4)
         }
     }
     
-    private func setTextAndCenter(label: UILabel?, text: String) {
+    private func setTextAndCenter(label: UILabel?, text: String, rotationAngle: CGFloat) {
         if let label = label {
             label.transform = CGAffineTransform.identity
             label.bounds = self.bounds
             label.text = text
             label.bounds.size.width = label.intrinsicContentSize.width
 
-            label.transform = CGAffineTransform.init(rotationAngle: CGFloat.random(in: -1...1))
+            label.transform = CGAffineTransform.init(rotationAngle: rotationAngle)
             
             UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear], animations: {
                 label.transform = label.transform.translatedBy(x: CGFloat.random(in: -20...20), y: CGFloat.random(in: -20...20))
             }, completion: nil)
+        }
+    }
+
+    enum RotationOption {
+        case none
+        case some
+        case lots
+        
+        static func random() -> RotationOption {
+            switch arc4random_uniform(3) {
+            case 0:
+                return RotationOption.none
+            case 1:
+                return RotationOption.some
+            default:
+                return RotationOption.lots
+            }
         }
     }
 }
