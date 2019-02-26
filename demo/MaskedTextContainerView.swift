@@ -101,9 +101,16 @@ class MaskedTextContainerView: UIView {
     
     private func setTextAndCenter(label: UILabel?, text: String) {
         if let label = label {
+            label.transform = CGAffineTransform.identity
+            label.bounds = self.bounds
             label.text = text
-            label.frame.size.width = label.intrinsicContentSize.width
-            label.frame.origin.x = (self.bounds.size.width / 2.0) - (label.bounds.size.width / 2.0)
+            label.bounds.size.width = label.intrinsicContentSize.width
+
+            label.transform = CGAffineTransform.init(rotationAngle: CGFloat.random(in: -1...1))
+            
+            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear], animations: {
+                label.transform = label.transform.translatedBy(x: CGFloat.random(in: -20...20), y: CGFloat.random(in: -20...20))
+            }, completion: nil)
         }
     }
 }
