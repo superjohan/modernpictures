@@ -13,6 +13,7 @@
 		9042B72F2056F88C000DB49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */; };
 		908535DE2215DBFF0050B00B /* placeholder.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 908535DD2215DBFF0050B00B /* placeholder.m4a */; };
 		908535E02215DD300050B00B /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908535DF2215DD300050B00B /* MaskView.swift */; };
+		90A1700A222583AD007E39E1 /* MaskedTextContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A17009222583AD007E39E1 /* MaskedTextContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9042B7302056F88C000DB49A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		908535DD2215DBFF0050B00B /* placeholder.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = placeholder.m4a; sourceTree = "<group>"; };
 		908535DF2215DD300050B00B /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
+		90A17009222583AD007E39E1 /* MaskedTextContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				9042B72B2056F88C000DB49A /* Assets.xcassets */,
 				9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */,
 				9042B7302056F88C000DB49A /* Info.plist */,
+				90A17009222583AD007E39E1 /* MaskedTextContainerView.swift */,
 			);
 			path = demo;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A1700A222583AD007E39E1 /* MaskedTextContainerView.swift in Sources */,
 				908535E02215DD300050B00B /* MaskView.swift in Sources */,
 				9042B7272056F88C000DB49A /* ViewController.swift in Sources */,
 				9042B7252056F88C000DB49A /* AppDelegate.swift in Sources */,
