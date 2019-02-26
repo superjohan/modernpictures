@@ -141,9 +141,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     // MARK: - Private
     
     private func showContentView(identifier: Int) {
-        self.textMaskView1?.isHidden = identifier == 0 ? false : true
-        self.textMaskView2?.isHidden = identifier == 1 ? false : true
-        self.textMaskView3?.isHidden = identifier == 2 ? false : true
+        for (index, view) in self.contentView.subviews.enumerated() {
+            view.isHidden = identifier == index
+        }
     }
     
     @objc
