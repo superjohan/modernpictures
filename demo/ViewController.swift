@@ -142,7 +142,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     
     private func showContentView(identifier: Int) {
         for (index, view) in self.contentView.subviews.enumerated() {
-            view.isHidden = identifier == index
+            view.isHidden = identifier != index
         }
     }
     
