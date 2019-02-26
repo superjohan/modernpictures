@@ -17,9 +17,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     let camera = SCNNode()
     let startButton: UIButton
     let qtFoolingBgView: UIView = UIView.init(frame: CGRect.zero)
-
-    let contentView1 = UIView()
-    let contentView2 = UIView()
+    let contentView = UIView()
+    
+    var textMaskView: MaskedTextContainerView?
     
     // MARK: - UIViewController
     
@@ -62,13 +62,10 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.startButton.addTarget(self, action: #selector(startButtonTouched), for: UIControl.Event.touchUpInside)
         
-        self.view.backgroundColor = UIColor(white: 0.2, alpha: 1)
+        self.view.backgroundColor = UIColor(white: 0.1, alpha: 1)
         
         self.sceneView.backgroundColor = .black
         self.sceneView.delegate = self
-
-        self.contentView1.backgroundColor = .clear
-        self.contentView2.backgroundColor = .clear
 
         self.qtFoolingBgView.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         
@@ -76,9 +73,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.view.addSubview(self.qtFoolingBgView)
         
 //        self.view.addSubview(self.sceneView)
-        
-        self.view.addSubview(self.contentView1)
-        self.view.addSubview(self.contentView2)
+
+        self.view.addSubview(self.contentView)
         
         self.view.addSubview(self.startButton)
     }
@@ -113,27 +109,14 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isPlaying = true
         self.sceneView.isHidden = true
 
-        self.contentView1.frame = self.view.bounds
-        let mask1 = MaskView(frame: self.view.bounds, offset: 2)
-        self.contentView1.mask = mask1
+        self.contentView.frame = self.view.bounds
         
-        self.contentView2.frame = self.view.bounds
-        let mask2 = MaskView(frame: self.view.bounds, offset: 6)
-        self.contentView2.mask = mask2
-
-        let label1 = UILabel(frame: self.contentView1.frame)
-        label1.font = UIFont.boldSystemFont(ofSize: 200)
-        label1.text = " hello"
-        label1.textColor = .red
-        self.contentView1.addSubview(label1)
-
-        let label2 = UILabel(frame: self.contentView1.frame)
-        label2.frame.size.height -= 100
-        label2.font = UIFont.boldSystemFont(ofSize: 200)
-        label2.text = "     there"
-        label2.textColor = .green
-        self.contentView2.addSubview(label2)
-
+        self.textMaskView = MaskedTextContainerView(frame: self.view.bounds, labelCount: 4)
+//        self.textMaskView?.setText(text1: "aaaa", text2: "bbbb")
+//        self.textMaskView?.setText(text1: "aaaa", text2: "bbbb", text3: "cccc")
+        self.textMaskView?.setText(text1: "aaaa", text2: "bbbb", text3: "cccc", text4: "dddd")
+        self.contentView.addSubview(self.textMaskView!)
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
