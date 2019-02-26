@@ -146,7 +146,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.audioPlayer.play()
         
-        self.textMaskView1?.setText(text1: "Modern pictures", text2: "Modern pictures")
+        self.textMaskView1?.setText(text1: "Modern", text2: "Modern")
         showContentView(identifier: 0)
         
         self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
