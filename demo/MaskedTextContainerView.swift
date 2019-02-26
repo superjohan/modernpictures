@@ -37,7 +37,9 @@ class MaskedTextContainerView: UIView {
         self.contentView2.mask = MaskView(frame: self.bounds, offset: 6, count: labelCount)
 
         self.label1 = addLabel(toView: self.contentView1)
+        self.label1?.clipsToBounds = false
         self.label2 = addLabel(toView: self.contentView2)
+        self.label2?.clipsToBounds = false
 
         self.addSubview(self.contentView1)
         self.addSubview(self.contentView2)
@@ -47,6 +49,7 @@ class MaskedTextContainerView: UIView {
             self.contentView3.frame = self.bounds
             self.contentView3.mask = MaskView(frame: self.bounds, offset: 10, count: labelCount)
             self.label3 = addLabel(toView: self.contentView3)
+            self.label3?.clipsToBounds = false
         }
 
         if labelCount >= 4 {
@@ -54,6 +57,7 @@ class MaskedTextContainerView: UIView {
             self.contentView4.frame = self.bounds
             self.contentView4.mask = MaskView(frame: self.bounds, offset: 14, count: labelCount)
             self.label4 = addLabel(toView: self.contentView4)
+            self.label4?.clipsToBounds = false
         }
     }
     
