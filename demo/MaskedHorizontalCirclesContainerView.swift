@@ -1,5 +1,5 @@
 //
-//  MaskedCirclesContainerView.swift
+//  MaskedHorizontalCirclesContainerView.swift
 //  demo
 //
 //  Created by Johan Halin on 27/02/2019.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class MaskedCirclesContainerView: UIView {
+class MaskedHorizontalCirclesContainerView: UIView {
     private let contentView1 = UIView()
     private let contentView2 = UIView()
-
+    
     private let circle1 = UIView()
     private let circle2 = UIView()
     
@@ -22,17 +22,17 @@ class MaskedCirclesContainerView: UIView {
         
         self.contentView1.frame = self.bounds
         self.addSubview(self.contentView1)
-
+        
         self.contentView2.frame = self.bounds
         self.addSubview(self.contentView2)
-
-        self.contentView1.mask = MaskView(frame: self.bounds, offset: 2, count: 2)
-        self.contentView2.mask = MaskView(frame: self.bounds, offset: 6, count: 2)
-
+        
+        self.contentView1.mask = MaskVerticalView(frame: self.bounds, offset: 2, count: 2)
+        self.contentView2.mask = MaskVerticalView(frame: self.bounds, offset: 6, count: 2)
+        
         let length = self.bounds.size.height - 25
         
         self.circle1.frame = CGRect(
-            x: (self.bounds.size.width / 2.0) - (length / 2.0) - (length / 4.0),
+            x: (self.bounds.size.width / 2.0) - (length / 2.0),
             y: (self.bounds.size.height / 2.0) - (length / 2.0),
             width: length,
             height: length
@@ -42,7 +42,7 @@ class MaskedCirclesContainerView: UIView {
         self.contentView1.addSubview(self.circle1)
         
         self.circle2.frame = CGRect(
-            x: (self.bounds.size.width / 2.0) - (length / 2.0) + (length / 4.0),
+            x: (self.bounds.size.width / 2.0) - (length / 2.0),
             y: (self.bounds.size.height / 2.0) - (length / 2.0),
             width: length,
             height: length
@@ -58,8 +58,8 @@ class MaskedCirclesContainerView: UIView {
     
     func animate() {
         UIView.animate(withDuration: Constants.shapeAnimationDuration, delay: 0, options: [], animations: {
-            self.circle1.frame.origin.y -= self.circle1.bounds.size.height / 4
-            self.circle2.frame.origin.y += self.circle2.bounds.size.height / 4
+            self.circle1.frame.origin.x -= self.circle1.bounds.size.width / 4
+            self.circle2.frame.origin.x += self.circle2.bounds.size.width / 4
         }, completion: nil)
     }
 }

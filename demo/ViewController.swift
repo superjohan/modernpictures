@@ -24,6 +24,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     var textMaskView3: MaskedTextContainerView?
 
     var circlesMaskView1: MaskedCirclesContainerView?
+    var circlesMaskView2: MaskedHorizontalCirclesContainerView?
     
     // MARK: - UIViewController
     
@@ -128,7 +129,10 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
 
         self.circlesMaskView1 = MaskedCirclesContainerView(frame: self.view.bounds)
         self.contentView.addSubview(self.circlesMaskView1!)
-        
+
+        self.circlesMaskView2 = MaskedHorizontalCirclesContainerView(frame: self.view.bounds)
+        self.contentView.addSubview(self.circlesMaskView2!)
+
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
@@ -171,6 +175,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             if position == 2 {
                 perform(#selector(event4), with: nil, afterDelay: hit3)
                 perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
+            } else if position == 8 {
+                    perform(#selector(event5), with: nil, afterDelay: hit3)
+                    perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
             } else {
                 perform(#selector(event3), with: nil, afterDelay: hit3)
             }
@@ -219,7 +226,14 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
         showContentView(identifier: 3)
     }
-    
+
+    @objc
+    private func event5() {
+        self.circlesMaskView2?.animate()
+        
+        showContentView(identifier: 4)
+    }
+
     private func randomWord() -> String {
         let word = Constants.vocabulary[Int.random(in: 0..<Constants.vocabulary.count)]
         

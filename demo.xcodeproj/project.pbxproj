@@ -12,6 +12,8 @@
 		9042B72C2056F88C000DB49A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72B2056F88C000DB49A /* Assets.xcassets */; };
 		9042B72F2056F88C000DB49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */; };
 		904B6D192226D54A004FC9D5 /* MaskedCirclesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B6D182226D54A004FC9D5 /* MaskedCirclesContainerView.swift */; };
+		904B6D1D2226F05D004FC9D5 /* MaskedHorizontalCirclesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B6D1C2226F05D004FC9D5 /* MaskedHorizontalCirclesContainerView.swift */; };
+		904B6D1F2226F07C004FC9D5 /* MaskVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B6D1E2226F07C004FC9D5 /* MaskVerticalView.swift */; };
 		908535DE2215DBFF0050B00B /* placeholder.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 908535DD2215DBFF0050B00B /* placeholder.m4a */; };
 		908535E02215DD300050B00B /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908535DF2215DD300050B00B /* MaskView.swift */; };
 		90A1700A222583AD007E39E1 /* MaskedTextContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A17009222583AD007E39E1 /* MaskedTextContainerView.swift */; };
@@ -26,6 +28,8 @@
 		9042B72E2056F88C000DB49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9042B7302056F88C000DB49A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		904B6D182226D54A004FC9D5 /* MaskedCirclesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedCirclesContainerView.swift; sourceTree = "<group>"; };
+		904B6D1C2226F05D004FC9D5 /* MaskedHorizontalCirclesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedHorizontalCirclesContainerView.swift; sourceTree = "<group>"; };
+		904B6D1E2226F07C004FC9D5 /* MaskVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskVerticalView.swift; sourceTree = "<group>"; };
 		908535DD2215DBFF0050B00B /* placeholder.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = placeholder.m4a; sourceTree = "<group>"; };
 		908535DF2215DD300050B00B /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		90A17009222583AD007E39E1 /* MaskedTextContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextContainerView.swift; sourceTree = "<group>"; };
@@ -66,11 +70,13 @@
 				9042B7242056F88C000DB49A /* AppDelegate.swift */,
 				9042B7262056F88C000DB49A /* ViewController.swift */,
 				908535DF2215DD300050B00B /* MaskView.swift */,
+				904B6D1E2226F07C004FC9D5 /* MaskVerticalView.swift */,
 				9042B72B2056F88C000DB49A /* Assets.xcassets */,
 				9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */,
 				9042B7302056F88C000DB49A /* Info.plist */,
 				90A17009222583AD007E39E1 /* MaskedTextContainerView.swift */,
 				904B6D182226D54A004FC9D5 /* MaskedCirclesContainerView.swift */,
+				904B6D1C2226F05D004FC9D5 /* MaskedHorizontalCirclesContainerView.swift */,
 				90A1700B2225B4A2007E39E1 /* Constants.swift */,
 			);
 			path = demo;
@@ -150,6 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				90A1700C2225B4A2007E39E1 /* Constants.swift in Sources */,
+				904B6D1D2226F05D004FC9D5 /* MaskedHorizontalCirclesContainerView.swift in Sources */,
+				904B6D1F2226F07C004FC9D5 /* MaskVerticalView.swift in Sources */,
 				90A1700A222583AD007E39E1 /* MaskedTextContainerView.swift in Sources */,
 				908535E02215DD300050B00B /* MaskView.swift in Sources */,
 				9042B7272056F88C000DB49A /* ViewController.swift in Sources */,

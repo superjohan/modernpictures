@@ -1,5 +1,5 @@
 //
-//  MaskedCirclesContainerView.swift
+//  MaskedVerticalCirclesContainerView.swift
 //  demo
 //
 //  Created by Johan Halin on 27/02/2019.
@@ -8,27 +8,27 @@
 
 import UIKit
 
-class MaskedCirclesContainerView: UIView {
+class MaskedVerticalCirclesContainerView: UIView {
     private let contentView1 = UIView()
     private let contentView2 = UIView()
-
+    
     private let circle1 = UIView()
     private let circle2 = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor(white: 0.1, alpha: 1)
+        self.backgroundColor = UIColor(white: 0.3, alpha: 1)
         
         self.contentView1.frame = self.bounds
         self.addSubview(self.contentView1)
-
+        
         self.contentView2.frame = self.bounds
         self.addSubview(self.contentView2)
-
+        
         self.contentView1.mask = MaskView(frame: self.bounds, offset: 2, count: 2)
         self.contentView2.mask = MaskView(frame: self.bounds, offset: 6, count: 2)
-
+        
         let length = self.bounds.size.height - 25
         
         self.circle1.frame = CGRect(
@@ -58,8 +58,8 @@ class MaskedCirclesContainerView: UIView {
     
     func animate() {
         UIView.animate(withDuration: Constants.shapeAnimationDuration, delay: 0, options: [], animations: {
-            self.circle1.frame.origin.y -= self.circle1.bounds.size.height / 4
-            self.circle2.frame.origin.y += self.circle2.bounds.size.height / 4
+            self.circle1.frame.origin.y = self.bounds.size.height * -0.5
+            self.circle2.frame.origin.y = self.bounds.size.height * 0.5
         }, completion: nil)
     }
 }
