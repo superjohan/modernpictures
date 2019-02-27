@@ -77,7 +77,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
 //        self.view.addSubview(self.sceneView)
 
         self.contentView.isHidden = true
-        self.contentView.backgroundColor = UIColor(white: 0.1, alpha: 1)
+        self.contentView.backgroundColor = .black
         self.view.addSubview(self.contentView)
         
         self.view.addSubview(self.startButton)

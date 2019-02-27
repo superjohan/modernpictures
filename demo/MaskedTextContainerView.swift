@@ -28,7 +28,7 @@ class MaskedTextContainerView: UIView {
         
         super.init(frame: frame)
         
-        self.backgroundColor = .clear
+        self.backgroundColor = UIColor(white: 0.1, alpha: 1)
         
         self.contentView1.frame = self.bounds
         self.contentView2.frame = self.bounds
