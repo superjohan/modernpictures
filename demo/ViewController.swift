@@ -201,6 +201,10 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
                 perform(#selector(event3), with: nil, afterDelay: hit3)
             }
         }
+
+        let endTime = length * Double(loops)
+        perform(#selector(endEvent1), with: nil, afterDelay: endTime - (tick * 2))
+        perform(#selector(endEvent2), with: nil, afterDelay: endTime + (tick * 32))
     }
     
     @objc
@@ -293,6 +297,34 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         })
     }
 
+    @objc
+    private func endEvent1() {
+        showContentView(identifier: 5)
+
+        var count = 0
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
+            self.boyView?.scramble(segmentCount: self.boyView!.segmentCount)
+            self.girlView?.scramble(segmentCount: self.girlView!.segmentCount)
+            
+            count += 1
+            if (count >= 50) {
+                timer.invalidate()
+            }
+            
+            if Int.random(in: 0...1) % 2 == 0 {
+                self.showContentView(identifier: 5)
+            } else {
+                self.showContentView(identifier: 6)
+            }
+        })
+    }
+
+    @objc
+    private func endEvent2() {
+        self.contentView.isHidden = true
+    }
+    
     private func randomWord() -> String {
         let word = Constants.vocabulary[Int.random(in: 0..<Constants.vocabulary.count)]
         
