@@ -188,9 +188,15 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             if position == 2 {
                 perform(#selector(event4), with: nil, afterDelay: hit3)
                 perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
+            } else if position == 5 {
+                perform(#selector(boyEvent1), with: nil, afterDelay: hit3)
             } else if position == 8 {
                     perform(#selector(event5), with: nil, afterDelay: hit3)
                     perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
+            } else if position == 11 {
+                perform(#selector(girlEvent1), with: nil, afterDelay: hit3)
+            } else if position == 14 {
+                perform(#selector(boyEvent2), with: nil, afterDelay: hit3)
             } else {
                 perform(#selector(event3), with: nil, afterDelay: hit3)
             }
@@ -245,6 +251,46 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.circlesMaskView2?.animate()
         
         showContentView(identifier: 4)
+    }
+    
+    @objc
+    private func boyEvent1() {
+        showContentView(identifier: 5)
+        
+        Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false, block: { timer in
+            self.boyView?.scramble(segmentCount: 1)
+        })
+    }
+
+    @objc
+    private func boyEvent2() {
+        showContentView(identifier: 5)
+        
+        self.boyView?.scramble(segmentCount: 0)
+        
+        var count = 1
+        
+        Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { timer in
+            self.boyView?.scramble(segmentCount: count)
+            
+            count += 1
+            if count == 10 {
+                timer.invalidate()
+            }
+        })
+    }
+
+    @objc
+    private func girlEvent1() {
+        showContentView(identifier: 6)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { timer in
+            self.girlView?.scramble(segmentCount: 2)
+        })
+
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { timer in
+            self.girlView?.scramble(segmentCount: 5)
+        })
     }
 
     private func randomWord() -> String {
