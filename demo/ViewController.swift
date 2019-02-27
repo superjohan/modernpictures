@@ -26,6 +26,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     var circlesMaskView1: MaskedCirclesContainerView?
     var circlesMaskView2: MaskedHorizontalCirclesContainerView?
     
+    var boyView: TextFlickerView?
+    var girlView: TextFlickerView?
+    
     // MARK: - UIViewController
     
     init() {
@@ -133,6 +136,16 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.circlesMaskView2 = MaskedHorizontalCirclesContainerView(frame: self.view.bounds)
         self.contentView.addSubview(self.circlesMaskView2!)
 
+        self.boyView = TextFlickerView(frame: self.view.bounds, text: "BOY")
+        self.boyView?.mask = MaskVerticalView(frame: self.view.bounds, offset: 2, count: 1)
+        self.boyView?.scramble(segmentCount: 0)
+        self.contentView.addSubview(self.boyView!)
+        
+        self.girlView = TextFlickerView(frame: self.view.bounds, text: "GIRL")
+        self.girlView?.mask = MaskVerticalView(frame: self.view.bounds, offset: 2, count: 1)
+        self.girlView?.scramble(segmentCount: 0)
+        self.contentView.addSubview(self.girlView!)
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
