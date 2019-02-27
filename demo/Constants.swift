@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
     static let vocabulary = [
-        "modern", "pictures", "members", "super", "hyper", "green", "precarity", "austerity", "violence", "brutal", "horizon", "chain", "street", "man", "woman", "boy", "girl", "simple", "hunters", "perform", "persist", "resist", "compute", "create", "grotesk", "devotion", "quick"
+        "modern", "pictures", "super", "hyper", "green", "violence", "horizon", "street", "man", "woman", "boy", "girl", "perform", "persist", "compute", "create", "devotion", "quick", "male", "female", "binary", "inter", "fluid"
     ]
     
     // for copypaste assistance: ((120.0 / 130.0) / 8.0)
