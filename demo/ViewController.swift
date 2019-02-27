@@ -23,6 +23,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     var textMaskView2: MaskedTextContainerView?
     var textMaskView3: MaskedTextContainerView?
 
+    var circlesMaskView1: MaskedCirclesContainerView?
+    
     // MARK: - UIViewController
     
     init() {
@@ -116,18 +118,16 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.contentView.frame = self.view.bounds
         
         self.textMaskView1 = MaskedTextContainerView(frame: self.view.bounds, labelCount: 2)
-        self.textMaskView1?.setText(text1: "", text2: "")
         self.contentView.addSubview(self.textMaskView1!)
 
         self.textMaskView2 = MaskedTextContainerView(frame: self.view.bounds, labelCount: 3)
-        self.textMaskView2?.setText(text1: "", text2: "", text3: "")
         self.contentView.addSubview(self.textMaskView2!)
 
         self.textMaskView3 = MaskedTextContainerView(frame: self.view.bounds, labelCount: 4)
-        self.textMaskView3?.setText(text1: "", text2: "", text3: "", text4: "")
         self.contentView.addSubview(self.textMaskView3!)
 
-        showContentView(identifier: 0)
+        self.circlesMaskView1 = MaskedCirclesContainerView(frame: self.view.bounds)
+        self.contentView.addSubview(self.circlesMaskView1!)
         
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
@@ -147,11 +147,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.audioPlayer.play()
         
         self.textMaskView1?.setText(text1: "Modern", text2: "Modern")
+
         showContentView(identifier: 0)
-        
-        self.textMaskView2?.setText(text1: "text1", text2: "text2", text3: "text3")
-        self.textMaskView3?.setText(text1: "text1", text2: "text2", text3: "text3", text4: "text4")
-        
+
         scheduleEvents()
     }
     
