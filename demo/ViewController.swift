@@ -168,7 +168,12 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             perform(#selector(event2), with: nil, afterDelay: hit2)
 
             let hit3 = startTime + (tick * 33.0)
-            perform(#selector(event3), with: nil, afterDelay: hit3)
+            if position == 2 {
+                perform(#selector(event4), with: nil, afterDelay: hit3)
+                perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
+            } else {
+                perform(#selector(event3), with: nil, afterDelay: hit3)
+            }
         }
     }
     
@@ -208,6 +213,13 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         showContentView(identifier: 0)
     }
 
+    @objc
+    private func event4() {
+        self.circlesMaskView1?.animate()
+        
+        showContentView(identifier: 3)
+    }
+    
     private func randomWord() -> String {
         let word = Constants.vocabulary[Int.random(in: 0..<Constants.vocabulary.count)]
         

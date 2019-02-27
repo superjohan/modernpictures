@@ -32,7 +32,7 @@ class MaskedCirclesContainerView: UIView {
         let length = self.bounds.size.height - 25
         
         self.circle1.frame = CGRect(
-            x: (self.bounds.size.width / 2.0) - (length / 2.0),
+            x: (self.bounds.size.width / 2.0) - (length / 2.0) - (length / 4.0),
             y: (self.bounds.size.height / 2.0) - (length / 2.0),
             width: length,
             height: length
@@ -41,7 +41,12 @@ class MaskedCirclesContainerView: UIView {
         self.circle1.backgroundColor = .white
         self.contentView1.addSubview(self.circle1)
         
-        self.circle2.frame = self.circle1.frame
+        self.circle2.frame = CGRect(
+            x: (self.bounds.size.width / 2.0) - (length / 2.0) + (length / 4.0),
+            y: (self.bounds.size.height / 2.0) - (length / 2.0),
+            width: length,
+            height: length
+        )
         self.circle2.layer.cornerRadius = self.circle1.layer.cornerRadius
         self.circle2.backgroundColor = .gray
         self.contentView2.addSubview(self.circle2)
@@ -49,5 +54,12 @@ class MaskedCirclesContainerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func animate() {
+        UIView.animate(withDuration: Constants.shapeAnimationDuration, delay: 0, options: [], animations: {
+            self.circle1.frame.origin.y = self.bounds.size.height * -0.5
+            self.circle2.frame.origin.y = self.bounds.size.height * 0.5
+        }, completion: nil)
     }
 }
