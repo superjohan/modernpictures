@@ -132,6 +132,12 @@ class MaskedTextContainerView: UIView {
         if let text4 = text4 {
             setTextAndCenter(label: self.label4, text: text4, rotationAngle: angle4)
         }
+        
+        if Int.random(in: 0...3) == 0 {
+            self.label2?.textColor = Constants.redColor
+        } else {
+            self.label2?.textColor = UIColor(white: 0.6, alpha: 1.0)
+        }
     }
     
     private func setTextAndCenter(label: UILabel?, text: String, rotationAngle: CGFloat) {
