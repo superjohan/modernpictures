@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let vocabulary = [
@@ -17,4 +18,5 @@ struct Constants {
     
     static let shapeAnimationDuration = 0.6923076923
     static let tunnelAnimationDuration = 2.0769230769
+    static let redColor = UIColor(red: 0.5, green: 0, blue: 0, alpha: 1.0)
 }

@@ -36,6 +36,8 @@ class TextFlickerView: UIView {
             labelText = String(suffix + prefix)
         }
         
+        labels.last?.textColor = Constants.redColor
+        
         self.labels = labels
         self.segmentCount = text.count * 4
         
