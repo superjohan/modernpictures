@@ -201,6 +201,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             let hit1 = startTime + (tick * 15.0)
             if position == 14 {
                 perform(#selector(tunnelEvent1), with: nil, afterDelay: hit1)
+            } else if position == 21 {
+                perform(#selector(tunnelEvent2), with: nil, afterDelay: hit1)
             } else {
                 perform(#selector(event1), with: nil, afterDelay: hit1)
             }
@@ -336,6 +338,26 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
 
         UIView.animate(withDuration: Constants.tunnelAnimationDuration, delay: 0, options: [.curveLinear], animations: {
             self.tunnelView.transform = self.tunnelView.transform.scaledBy(x: 1.05, y: 1.05)
+        }, completion: nil)
+    }
+    
+    @objc
+    private func tunnelEvent2() {
+        showContentView(identifier: 9)
+        
+        UIView.animate(withDuration: Constants.tunnelAnimationDuration, delay: 0, options: [.curveLinear], animations: {
+            let transform = self.tunnelView.transform.scaledBy(x: 1.1, y: 1.1)
+            self.tunnelView.transform = transform.rotated(by: 0.02)
+        }, completion: nil)
+    }
+    
+    @objc
+    private func tunnelEvent3() {
+        showContentView(identifier: 9)
+        
+        UIView.animate(withDuration: Constants.tunnelAnimationDuration, delay: 0, options: [.curveLinear], animations: {
+            let transform = self.tunnelView.transform.scaledBy(x: 1.1, y: 1.1)
+            self.tunnelView.transform = transform.rotated(by: 0.1)
         }, completion: nil)
     }
     
