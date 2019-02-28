@@ -29,7 +29,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     var boyView: TextFlickerView?
     var girlView: TextFlickerView?
     
-    var squaresMaskView: MaskedSquaresRotationContainerView?
+    var squaresMaskView1: MaskedSquaresRotationContainerView?
+    var squaresMaskView2: MaskedSquaresFlipContainerView?
     
     // MARK: - UIViewController
     
@@ -148,8 +149,11 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.girlView?.scramble(segmentCount: 0)
         self.contentView.addSubview(self.girlView!)
         
-        self.squaresMaskView = MaskedSquaresRotationContainerView(frame: self.view.bounds)
-        self.contentView.addSubview(self.squaresMaskView!)
+        self.squaresMaskView1 = MaskedSquaresRotationContainerView(frame: self.view.bounds)
+        self.contentView.addSubview(self.squaresMaskView1!)
+        
+        self.squaresMaskView2 = MaskedSquaresFlipContainerView(frame: self.view.bounds)
+        self.contentView.addSubview(self.squaresMaskView2!)
         
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
@@ -205,6 +209,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
                 perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
             } else if position == 17 {
                 perform(#selector(boyEvent2), with: nil, afterDelay: hit3)
+            } else if position == 20 {
+                perform(#selector(event7), with: nil, afterDelay: hit3)
+                perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
             } else {
                 perform(#selector(event3), with: nil, afterDelay: hit3)
             }
@@ -267,9 +274,16 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
 
     @objc
     private func event6() {
-        self.squaresMaskView?.animate()
+        self.squaresMaskView1?.animate()
         
         showContentView(identifier: 7)
+    }
+    
+    @objc
+    private func event7() {
+        self.squaresMaskView2?.animate()
+        
+        showContentView(identifier: 8)
     }
     
     @objc
