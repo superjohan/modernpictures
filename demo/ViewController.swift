@@ -211,7 +211,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
                 perform(#selector(boyEvent2), with: nil, afterDelay: hit3)
             } else if position == 20 {
                 perform(#selector(event7), with: nil, afterDelay: hit3)
-                perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
+                perform(#selector(girlEvent2), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
             } else {
                 perform(#selector(event3), with: nil, afterDelay: hit3)
             }
@@ -323,6 +323,24 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { timer in
             self.girlView?.scramble(segmentCount: 5)
+        })
+    }
+
+    @objc
+    private func girlEvent2() {
+        showContentView(identifier: 6)
+
+        self.girlView?.scramble(segmentCount: 4)
+        
+        var count = 1
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
+            self.girlView?.scramble(segmentCount: count)
+            
+            count += 1
+            if count == 10 {
+                timer.invalidate()
+            }
         })
     }
 
