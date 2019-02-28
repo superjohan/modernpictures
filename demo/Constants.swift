@@ -16,4 +16,5 @@ struct Constants {
     // for copypaste assistance: ((120.0 / 130.0) / 8.0)
     
     static let shapeAnimationDuration = 0.6923076923
+    static let tunnelAnimationDuration = 2.0769230769
 }

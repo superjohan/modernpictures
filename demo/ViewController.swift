@@ -32,6 +32,9 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     var squaresMaskView1: MaskedSquaresRotationContainerView?
     var squaresMaskView2: MaskedSquaresFlipContainerView?
     
+    let tunnelView = UIImageView(image: UIImage(named: "tunnel"))
+    let tunnelContentView = UIView()
+    
     // MARK: - UIViewController
     
     init() {
@@ -88,6 +91,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.contentView.isHidden = true
         self.contentView.backgroundColor = .black
         self.view.addSubview(self.contentView)
+        
+        self.tunnelContentView.addSubview(self.tunnelView)
         
         self.view.addSubview(self.startButton)
     }
@@ -155,6 +160,12 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.squaresMaskView2 = MaskedSquaresFlipContainerView(frame: self.view.bounds)
         self.contentView.addSubview(self.squaresMaskView2!)
         
+        self.tunnelContentView.frame = self.view.bounds
+        self.tunnelContentView.mask = MaskVerticalView(frame: self.view.bounds, offset: 2, count: 1)
+        self.contentView.addSubview(self.tunnelContentView)
+
+        self.tunnelView.frame = self.view.bounds
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
@@ -188,7 +199,11 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             let startTime = length * Double(position)
             
             let hit1 = startTime + (tick * 15.0)
-            perform(#selector(event1), with: nil, afterDelay: hit1)
+            if position == 14 {
+                perform(#selector(tunnelEvent1), with: nil, afterDelay: hit1)
+            } else {
+                perform(#selector(event1), with: nil, afterDelay: hit1)
+            }
             
             let hit2 = startTime + (tick * 32.0)
             perform(#selector(event2), with: nil, afterDelay: hit2)
@@ -204,6 +219,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             } else if position == 11 {
                 perform(#selector(event6), with: nil, afterDelay: hit3)
                 perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
+            } else if position == 12 {
+                perform(#selector(tunnelEvent1), with: nil, afterDelay: hit3)
             } else if position == 14 {
                 perform(#selector(event5), with: nil, afterDelay: hit3)
                 perform(#selector(event3), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
@@ -313,6 +330,15 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         })
     }
 
+    @objc
+    private func tunnelEvent1() {
+        showContentView(identifier: 9)
+
+        UIView.animate(withDuration: Constants.tunnelAnimationDuration, delay: 0, options: [.curveLinear], animations: {
+            self.tunnelView.transform = self.tunnelView.transform.scaledBy(x: 1.05, y: 1.05)
+        }, completion: nil)
+    }
+    
     @objc
     private func girlEvent1() {
         showContentView(identifier: 6)
