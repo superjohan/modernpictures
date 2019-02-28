@@ -201,15 +201,19 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             let hit1 = startTime + (tick * 15.0)
             if position == 14 {
                 perform(#selector(tunnelEvent1), with: nil, afterDelay: hit1)
-            } else if position == 21 {
+            } else if position == 19 {
                 perform(#selector(tunnelEvent2), with: nil, afterDelay: hit1)
+            } else if position == 21 {
+                perform(#selector(tunnelEvent3), with: nil, afterDelay: hit1)
             } else {
                 perform(#selector(event1), with: nil, afterDelay: hit1)
             }
             
             let hit2 = startTime + (tick * 32.0)
-            perform(#selector(event2), with: nil, afterDelay: hit2)
-
+            if position != 21 {
+                perform(#selector(event2), with: nil, afterDelay: hit2)
+            }
+            
             let hit3 = startTime + (tick * 33.0)
             if position == 2 {
                 perform(#selector(event4), with: nil, afterDelay: hit3)
@@ -231,7 +235,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
             } else if position == 20 {
                 perform(#selector(event7), with: nil, afterDelay: hit3)
                 perform(#selector(girlEvent2), with: nil, afterDelay: hit3 + Constants.shapeAnimationDuration)
-            } else {
+            } else if position != 21 {
                 perform(#selector(event3), with: nil, afterDelay: hit3)
             }
         }
