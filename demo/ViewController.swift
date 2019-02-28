@@ -355,7 +355,7 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
     private func tunnelEvent3() {
         showContentView(identifier: 9)
         
-        UIView.animate(withDuration: Constants.tunnelAnimationDuration, delay: 0, options: [.curveLinear], animations: {
+        UIView.animate(withDuration: Constants.tunnelAnimationDuration * 2, delay: 0, options: [.curveLinear], animations: {
             let transform = self.tunnelView.transform.scaledBy(x: 1.1, y: 1.1)
             self.tunnelView.transform = transform.rotated(by: 0.1)
         }, completion: nil)
