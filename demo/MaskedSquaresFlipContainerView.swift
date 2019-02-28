@@ -29,7 +29,7 @@ class MaskedSquaresFlipContainerView: UIView {
         self.contentView1.mask = MaskView(frame: self.bounds, offset: 2, count: 2)
         self.contentView2.mask = MaskView(frame: self.bounds, offset: 6, count: 2)
         
-        let length = self.bounds.size.height - 50
+        let length = self.bounds.size.height - 100
         
         self.square1.frame = CGRect(
             x: (self.bounds.size.width / 2.0) - length,
